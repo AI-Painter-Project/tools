@@ -1,0 +1,13 @@
+# Use the official Jenkins LTS image as the base
+FROM jenkins/jenkins:lts-jdk17
+
+# Switch to the root user for installation
+USER root
+
+# Install Maven
+RUN apt-get update && \
+    apt-get install -y maven && \
+    rm -rf /var/lib/apt/lists/*
+
+# Switch back to the Jenkins user
+USER jenkins
